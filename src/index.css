@@ -1,0 +1,327 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-cinzel: 'Cinzel', serif;
+    --font-cinzel-dec: 'Cinzel Decorative', cursive;
+    --font-cormorant: 'Cormorant Garamond', serif;
+    --font-arabic: 'Amiri', serif;
+    --font-script: 'Great Vibes', cursive;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+    /* Gold palette */
+    --gold-100: #FFF8E7;
+    --gold-200: #F5E6A3;
+    --gold-300: #E5C158;
+    --gold-400: #D4AF37;
+    --gold-500: #B8860B;
+    --gold-600: #AA771C;
+    --gold-700: #8B6914;
+
+    /* Rose palette */
+    --rose-light: #fce4ec;
+    --rose-mid: #e8a0b4;
+    --rose-deep: #d4577a;
+
+    /* Emerald palette */
+    --emerald-deep: #06241b;
+    --emerald-card: #0d4132;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-heading {
+    font-family: var(--font-cinzel);
+  }
+
+  .font-ornate {
+    font-family: var(--font-cinzel-dec);
+  }
+
+  .font-serif-luxury {
+    font-family: var(--font-cormorant);
+  }
+
+  .font-arabic {
+    font-family: var(--font-arabic);
+  }
+
+  .font-script {
+    font-family: var(--font-script);
+  }
+}
+
+/* ===== GOLD & METALLIC EFFECTS ===== */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFE082 0%, #DFB75A 20%, #FFF6D6 45%, #B8860B 70%, #F5DEB3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-gradient-text-animated {
+  background: linear-gradient(90deg, #FFE082, #DFB75A, #FFF6D6, #B8860B, #F5DEB3, #FFE082);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldTextFlow 6s ease-in-out infinite;
+}
+
+@keyframes goldTextFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gold-box-border {
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.1), inset 0 0 25px rgba(212, 175, 55, 0.04);
+}
+
+/* ===== JAALI LATTICE PATTERN ===== */
+.bg-jaali {
+  background-image:
+    radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 0),
+    radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 0);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
+.bg-moroccan-stars {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 2px, transparent 2.5px),
+    radial-gradient(circle at 0% 100%, rgba(212, 175, 55, 0.05) 3px, transparent 3.5px),
+    radial-gradient(circle at 100% 0%, rgba(212, 175, 55, 0.05) 3px, transparent 3.5px);
+  background-size: 28px 28px;
+}
+
+/* ===== SHIMMER OVERLAY ===== */
+@keyframes goldShimmer {
+  0% { background-position: -300% 0; }
+  100% { background-position: 300% 0; }
+}
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,215,0,0.18) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: goldShimmer 4s infinite linear;
+}
+
+/* ===== 3D CARD EFFECTS ===== */
+.card-3d {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+.card-3d-inner {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card-3d-inner:hover {
+  transform: rotateY(3deg) rotateX(-2deg) scale(1.01);
+}
+
+@media (max-width: 640px) {
+  .card-3d-inner:hover {
+    transform: none;
+  }
+}
+
+/* ===== INVITATION CARD GLASS EFFECT ===== */
+.invitation-glass {
+  background: var(--card-bg, rgba(38, 15, 30, 0.88));
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid var(--card-border, rgba(226, 132, 152, 0.35));
+  box-shadow:
+    0 32px 64px rgba(0, 0, 0, 0.55),
+    0 0 0 1px var(--card-border, rgba(212, 175, 55, 0.15)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 80px var(--card-glow, rgba(226, 132, 152, 0.15));
+}
+
+/* ===== FLOATING PETAL ANIMATIONS ===== */
+@keyframes floatPetal {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(40px);
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg) translateX(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes floatPetalAlt {
+  0% {
+    transform: translateY(-8vh) rotate(45deg) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(55vh) rotate(225deg) translateX(-50px);
+    opacity: 0.45;
+  }
+  85% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(115vh) rotate(405deg) translateX(30px);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; filter: blur(1px); }
+  25% { opacity: 0.7; filter: blur(0px); }
+  75% { opacity: 0.3; filter: blur(0.5px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(212, 175, 55, 0.2); }
+  50% { box-shadow: 0 0 22px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.2); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* ===== SMOOTH PAGE TRANSITIONS ===== */
+@keyframes slideUpEnter {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideDownExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.97);
+  }
+}
+
+.page-enter {
+  animation: slideUpEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-exit {
+  animation: slideDownExit 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ===== WAX SEAL INTERACTIVE ===== */
+@keyframes sealPulse {
+  0%, 100% {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 20px rgba(212,175,55,0.3);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 35px rgba(212,175,55,0.55), 0 0 60px rgba(212,175,55,0.15);
+  }
+}
+
+.seal-pulse {
+  animation: sealPulse 2.5s ease-in-out infinite;
+}
+
+/* ===== MOBILE-FIRST IMPROVEMENTS ===== */
+@media (max-width: 640px) {
+  .invitation-glass {
+    border-radius: 20px;
+    margin: 8px;
+    padding: 20px 16px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.06);
+  }
+
+  .font-arabic {
+    font-size: 1.3rem;
+    line-height: 2;
+  }
+}
+
+/* ===== SWIPE HINT INDICATOR ===== */
+@keyframes swipeHint {
+  0% { transform: translateX(0); opacity: 0.6; }
+  30% { transform: translateX(-12px); opacity: 1; }
+  60% { transform: translateX(0); opacity: 0.6; }
+  100% { transform: translateX(0); opacity: 0.4; }
+}
+
+.swipe-hint {
+  animation: swipeHint 2s ease-in-out infinite;
+}
+
+/* ===== COUNTDOWN FLIP ===== */
+@keyframes countFlip {
+  0% { transform: rotateX(0); }
+  50% { transform: rotateX(-90deg); }
+  51% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0); }
+}
+
+.count-flip {
+  animation: countFlip 0.4s ease-in-out;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #0c1a14; }
+::-webkit-scrollbar-thumb { background: #b38728; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #dfb75a; }
+
+/* ===== HIDE SCROLLBAR UTILITY ===== */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white !important; color: #333 !important; }
+  .invitation-glass {
+    background: white !important;
+    border: 2px solid #D4AF37 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+}
